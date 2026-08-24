@@ -1,19 +1,15 @@
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        i = 0
-        j = index = len(nums) - 1
-        sorted_ls = [0] * len(nums)
-        while i <= j:
-            square_i = nums[i] * nums[i]
-            square_j = nums[j] * nums[j]
-            if square_i < square_j:
-                sorted_ls[index] = square_j
-                j -= 1
+        new_ls = [None]*len(nums)
+        left = 0
+        length = right = len(nums) - 1
+        while left <= right:
+            if nums[left]**2 > nums[right]**2:
+                new_ls[length] = nums[left]**2
+                left += 1
             else:
-                sorted_ls[index] = square_i
-                i += 1
-            index -= 1
-        return sorted_ls
+                new_ls[length] = nums[right]**2
+                right -= 1
+            length -= 1
 
-                
-
+        return new_ls
