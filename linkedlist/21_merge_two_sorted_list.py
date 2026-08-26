@@ -12,12 +12,12 @@ class Solution(object):
         while l1_pos and l2_pos:
             if l1_pos.val < l2_pos.val:
                 cur.next = l1_pos
-                cur = cur.next
                 l1_pos = l1_pos.next
             else:
                 cur.next = l2_pos
-                cur = cur.next
                 l2_pos = l2_pos.next
+
+            cur = cur.next
 
         cur.next = l1_pos if l1_pos else l2_pos
 
